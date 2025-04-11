@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Ghanaian Experience</title>
+    <link rel="stylesheet" href="style.css"> <link rel="stylesheet" href="book.css">
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">BTEC PEARSON</a> </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="culture.html">Culture</a></li>
+                <li><a href="about.html">About Ghana</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="book-now.html" class="active nav-cta">Book Now</a></li> </ul>
+            </ul>
+            <div class="burger"> 
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="booking-page-main">
+        <div class="booking-container">
+
+            <div class="booking-form-section">
+                <h1>Book Your Ghanaian Experience</h1>
+                <p class="subtitle">Secure your tour or accommodation today. Akwaaba!</p>
+
+                <form id="booking-form" action="/process-booking" method="POST"> <fieldset>
+                        <legend>1. Select Your Experience</legend>
+                        <div class="form-group">
+                            <label for="experience-type">Type</label>
+                            <select id="experience-type" name="experience_type" required>
+                                <option value="" disabled selected>-- Choose Tour or Accommodation --</option>
+                                <option value="tour_accra_city">Accra City Discovery Tour</option>
+                                <option value="tour_cape_coast">Cape Coast & Elmina Heritage Tour</option>
+                                <option value="tour_mole_safari">Mole National Park Safari (3 Days)</option>
+                                <option value="hotel_labadi">Labadi Beach Hotel (Standard Room)</option>
+                                <option value="guesthouse_kokrobite">Kokrobite Beach Guesthouse</option>
+                                </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>2. Date & Participants</legend>
+                        <div class="form-row">
+                            <div class="form-group form-group-half">
+                                <label for="booking-date">Select Date</label>
+                                <input type="date" id="booking-date" name="booking_date" required min="2025-04-10"> <small>Check availability calendar (JS Feature)</small>
+                            </div>
+                            <div class="form-group form-group-half">
+                                <label>Number of Participants</label>
+                                <div class="quantity-selector">
+                                    <label for="adults">Adults:</label>
+                                    <button type="button" class="quantity-minus" aria-label="Decrease adults quantity">-</button>
+                                    <input type="number" id="adults" name="adults" value="1" min="1" max="10" readonly>
+                                    <button type="button" class="quantity-plus" aria-label="Increase adults quantity">+</button>
+                                </div>
+                                <div class="quantity-selector">
+                                    <label for="children">Children:</label>
+                                    <button type="button" class="quantity-minus" aria-label="Decrease children quantity">-</button>
+                                    <input type="number" id="children" name="children" value="0" min="0" max="5" readonly>
+                                    <button type="button" class="quantity-plus" aria-label="Increase children quantity">+</button>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                             <label for="special-requests">Special Requests (Optional)</label>
+                             <textarea id="special-requests" name="special_requests" rows="3" placeholder="e.g., Dietary needs, accessibility requirements, preferred guide language"></textarea>
+                         </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>3. Your Details</legend>
+                         <div class="form-row">
+                            <div class="form-group form-group-half">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" name="full_name" required autocomplete="name">
+                            </div>
+                            <div class="form-group form-group-half">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required autocomplete="email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group form-group-half">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+233 XX XXX XXXX">
+                            </div>
+                             <div class="form-group form-group-half">
+                                <label for="country">Country of Residence</label>
+                                <input type="text" id="country" name="country" autocomplete="country-name">
+                             </div>
+                         </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>4. Payment Method</legend>
+                        <div class="payment-options">
+                            <label class="payment-option">
+                                <input type="radio" name="payment_method" value="credit_card" required>
+                                <img src="images/icons/credit-card.svg" alt="Credit Card Icon"> Credit/Debit Card
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment_method" value="mobile_money">
+                                <img src="images/icons/mobile-money.svg" alt="Mobile Money Icon"> Mobile Money (MTN, Voda, AirtelTigo)
+                            </label>
+                        </div>
+                        <div id="payment-details-placeholder" class="payment-details-area">
+                            <p>Secure payment area will load here based on selection.</p>
+                            </div>
+                         <div class="trust-signals">
+                             <img src="images/icons/ssl-secure.svg" alt="SSL Secure Connection" height="25">
+                             <span>Secure SSL Encrypted Payment</span>
+                         </div>
+                    </fieldset>
+
+                    <div class="form-footer">
+                        <div class="form-group terms-agreement">
+                            <input type="checkbox" id="terms" name="terms_agreed" required>
+                            <label for="terms">I agree to the <a href="/terms-conditions" target="_blank">Terms and Conditions</a> and <a href="/cancellation-policy" target="_blank">Cancellation Policy</a>.</label>
+                        </div>
+                        <button type="submit" class="button-base button-primary submit-booking-btn">Proceed to Payment</button>
+                        <p class="secure-info">Your information is safe and secure.</p>
+                    </div>
+
+                </form>
+            </div>
+
+            <aside class="booking-summary-section">
+                <div class="summary-box">
+                    <h2>Booking Summary</h2>
+                    <div id="summary-experience" class="summary-item">
+                        <strong>Experience:</strong> <span>Please select an experience</span>
+                    </div>
+                    <div id="summary-date" class="summary-item">
+                        <strong>Date:</strong> <span>Select a date</span>
+                    </div>
+                    <div id="summary-participants" class="summary-item">
+                        <strong>Participants:</strong> <span id="participants-adults">1 Adult</span>, <span id="participants-children">0 Children</span>
+                    </div>
+                    <hr>
+                    <div class="summary-pricing">
+                        <div class="price-item">
+                            <span>Base Price:</span>
+                            <span id="summary-base-price">GHS 0.00</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Taxes & Fees:</span>
+                            <span id="summary-taxes">GHS 0.00</span>
+                        </div>
+                        <hr>
+                        <div class="price-item total-price">
+                            <span>Total Cost (GHS):</span>
+                            <strong id="summary-total-price">GHS 0.00</strong>
+                        </div>
+                         <div class="price-item usd-estimate">
+                            <span>(Approx. USD <span id="summary-usd-estimate">$0.00</span>)</span> </div>
+                    </div>
+                    <div class="summary-image">
+                        <img id="summary-experience-image" src="images/placeholder-ghana.jpg" alt="Selected Experience Image">
+                         <p>Image updates based on selection</p>
+                    </div>
+                    <div class="summary-help">
+                        <p>Need Help? <a href="contact.html">Contact Us</a> or call +233 XX XXX XXXX</p>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer id="contact-footer">
+        <div class="footer-content">
+            <p>Contact Us: info@ghtourism-example.com | +233 XX XXX XXXX</p>
+            <div class="social-links">
+                <a href="#">Facebook</a> | <a href="#">Instagram</a> | <a href="#">Twitter</a>
+            </div>
+            <p>&copy; 2025 GH Tourism Example. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+    </body>
+</html>
